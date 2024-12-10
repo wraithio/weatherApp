@@ -4,3 +4,37 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+
+.container{
+    margin-top: 5rem;
+}
+
+.input-group{
+    background-color: rgb(207, 207, 139);
+    width: fit-content;
+}
+
+span{
+    background-color: transparent !important;
+    border: none !important;
+}
+input{
+    background-color: transparent !important;
+    border: none !important;
+    width: fit-content;
+}
+#searchBtn:hover{
+    cursor: pointer;
+}
+
+.cityTitle{
+    background-color: rgb(224, 187, 22);
+}
+
+.cityFormat{
+    display: flex;
+}
+
+#stateName{
+    padding: 0rem .5rem;
+}
