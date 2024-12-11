@@ -12,6 +12,7 @@ body{
 .input-group{
     background-color: rgb(207, 207, 139);
     width: fit-content;
+    border-radius: .25rem;
 }
 
 span{
@@ -20,15 +21,19 @@ span{
 }
 input{
     background-color: transparent !important;
-    border: none !important;
-    width: fit-content;
+    border: none !important;    
 }
 #searchBtn:hover{
     cursor: pointer;
 }
 
+.weatherCard{
+    border-radius: 1rem;
+}
+
 .cityTitle{
     background-color: rgb(224, 187, 22);
+    border-radius: 1rem 1rem 0rem 0rem;
 }
 
 .cityFormat{
@@ -37,4 +42,82 @@ input{
 
 #stateName{
     padding: 0rem .5rem;
+}
+
+.fa-heart:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.cityBody{
+    background-color: rgb(207, 207, 139);
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.highLows{
+    justify-content: center;
+}
+
+.highLows h3{
+    width: fit-content;
+    padding: 0px;
+}
+
+.weatherCol{
+    width: 150px;
+    display: flex;
+    align-self: end;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.fivedayForecast{
+    display: flex;
+    gap: 3rem;
+    justify-content: space-around;
+}
+
+.weekdayCard{
+   width: fit-content;
+}
+
+.weekdayWeather{
+    background-color: rgb(224, 187, 22);
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.weekdayTemp{
+    background-color: rgb(207, 207, 139);
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+#day1Icon{
+    align-self: end;
+    height: 70px;
+    position: relative;
+    top: 35px;
+}
+#day2Icon{
+    align-self: end;
+    height: 70px;
+    position: relative;
+    top: 35px;
+}
+#day3Icon{
+    align-self: end;
+    height: 70px;
+    position: relative;
+    top: 35px;
+}
+#day4Icon{
+    align-self: end;
+    height: 70px;
+    position: relative;
+    top: 35px;
+}
+#day5Icon{
+    align-self: end;
+    height: 70px;
+    position: relative;
+    top: 35px;
 }

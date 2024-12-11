@@ -15,43 +15,110 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-5">
+        <div class="col-5 weatherCard">
           <div>
             <div class="row cityTitle">
-              <div class="col-10 cityFormat"><h2 id="cityName"></h2>
-                <h2> ,</h2>
+              <div class="col-10 cityFormat">
+                <h2 id="cityName">loading...</h2>
                 <h2 id="stateName"></h2>
-                <h2> </h2>
-                <h2 id="countryName"></h2></div>
-              <div class="col-2 align-self-center"><i class="fa-regular fa-heart fa-2xl"></i></div>
+                <h2 id="countryName"></h2>
+              </div>
+              <div class="col-2 align-self-center">
+                <i class="fa-regular fa-heart fa-2xl"></i>
+              </div>
             </div>
-            <div class="row">
-              <div class="col-6"><h1 id="cityTemp"></h1></div>
-              <div class="col-6"></div>
-            </div>
-          </div>
-          </div>
-          <div class="col-7 align">
-            <div class="input-group">
-              <span id="searchBtn" class="input-group-text"
-                ><i class="fa-solid fa-magnifying-glass fa-2xl"></i
-              ></span>
-
-              <input
-                type="text"
-                class="form-control"
-                id="inputField"
-                placeholder="Search for a City"
-              />
+            <div class="row cityBody">
+              <div class="col-6">
+                <div class="row text-center">
+                  <h1 id="cityTemp"></h1>
+                </div>
+                <div class="row highLows">
+                  <h3 id="cityHigh"></h3>
+                  <h3 id="cityLow"></h3>
+                </div>
+              </div>
+              <div class="col-6 weatherCol">
+                <i id="weatherIcon"></i>
+                <h3 id="weatherType" class="text-center"></h3>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row"></div>
-        <button id="generateLoc" type="button" class="btn btn-primary">
-          GENERATE LOCATION
-        </button>
-      </div>
+        <div class="col-7">
+          <div class="input-group">
+            <span id="searchBtn" class="input-group-text"
+              ><i class="fa-solid fa-magnifying-glass fa-xl"></i
+            ></span>
 
+            <input
+              type="text"
+              class="form-control"
+              id="inputField"
+              placeholder="Search for a City"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
+    </div>
+    <button id="generateLoc" type="button" class="btn btn-primary">
+      GENERATE LOCATION
+    </button>
+    <button id="generate5day" type="button" class="btn btn-primary">
+      GENERATE 5 DAY
+    </button>
+    <div class="fivedayForecast container">
+      <div class="weekdayCard text-center">
+        <div class="weekdayWeather row">
+          <i id="day1Icon"></i>
+          <h3 id="day1Type">loading...</h3>
+        </div>
+        <div class="weekdayTemp row">
+          <h1 id="day1Temp"></h1>
+          <h3 id="day1Name"></h3>
+        </div>
+      </div>
+      <div class="weekdayCard text-center">
+        <div class="weekdayWeather row">
+          <i id="day2Icon"></i>
+          <h3 id="day2Type">loading...</h3>
+        </div>
+        <div class="weekdayTemp row">
+          <h1 id="day2Temp"></h1>
+          <h3 id="day2Name"></h3>
+        </div>
+      </div>
+      <div class="weekdayCard text-center">
+        <div class="weekdayWeather row">
+          <i id="day3Icon"></i>
+          <h3 id="day3Type">loading...</h3>
+        </div>
+        <div class="weekdayTemp row">
+          <h1 id="day3Temp"></h1>
+          <h3 id="day3Name"></h3>
+        </div>
+      </div>
+      <div class="weekdayCard text-center">
+        <div class="weekdayWeather row">
+          <i id="day4Icon"></i>
+          <h3 id="day4Type">loading...</h3>
+        </div>
+        <div class="weekdayTemp row">
+          <h1 id="day4Temp"></h1>
+          <h3 id="day4Name"></h3>
+        </div>
+      </div>
+      <div class="weekdayCard text-center">
+        <div class="weekdayWeather row">
+          <i id="day5Icon"></i>
+          <h3 id="day5Type">loading...</h3>
+        </div>
+        <div class="weekdayTemp row">
+          <h1 id="day5Temp"></h1>
+          <h3 id="day5Name"></h3>
+        </div>
+      </div>
+    </div>
     <script
       src="https://kit.fontawesome.com/873685b891.js"
       crossorigin="anonymous"
