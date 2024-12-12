@@ -19,7 +19,7 @@
           <div>
             <div class="row cityTitle">
               <div class="col-10 cityFormat">
-                <h2 id="cityName">loading...</h2>
+                <h2 id="cityName"></h2>
                 <h2 id="stateName"></h2>
                 <h2 id="countryName"></h2>
               </div>
@@ -30,21 +30,21 @@
             <div class="row cityBody">
               <div class="col-6">
                 <div class="row text-center">
-                  <h1 id="cityTemp"></h1>
+                  <h1 id="cityTemp">33</h1>
                 </div>
                 <div class="row highLows">
-                  <h3 id="cityHigh"></h3>
-                  <h3 id="cityLow"></h3>
+                  <h3 id="cityHigh">33</h3>
+                  <h3 id="cityLow">33</h3>
                 </div>
               </div>
-              <div class="col-6 weatherCol">
-                <i id="weatherIcon"></i>
-                <h3 id="weatherType" class="text-center"></h3>
+              <div class="col-6">
+                <div class="row"><i id="weatherIcon"></i></div>
+                <div class="row typeFormat"><h3 id="weatherType">c</h3></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-7">
+        <div class="col-7 inputCol">
           <div class="input-group">
             <span id="searchBtn" class="input-group-text"
               ><i class="fa-solid fa-magnifying-glass fa-xl"></i
@@ -59,19 +59,18 @@
           </div>
         </div>
       </div>
-      <div class="row"></div>
     </div>
     <button id="generateLoc" type="button" class="btn btn-primary">
-      GENERATE LOCATION
+      ON LOAD
     </button>
-    <button id="generate5day" type="button" class="btn btn-primary">
+    <!-- <button id="generate5day" type="button" class="btn btn-primary">
       GENERATE 5 DAY
-    </button>
-    <div class="fivedayForecast container">
+    </button> -->
+    <div id="forecasttabs" class="fivedayForecast container">
       <div class="weekdayCard text-center">
         <div class="weekdayWeather row">
           <i id="day1Icon"></i>
-          <h3 id="day1Type">loading...</h3>
+          <h3 id="day1Type"></h3>
         </div>
         <div class="weekdayTemp row">
           <h1 id="day1Temp"></h1>
@@ -81,7 +80,7 @@
       <div class="weekdayCard text-center">
         <div class="weekdayWeather row">
           <i id="day2Icon"></i>
-          <h3 id="day2Type">loading...</h3>
+          <h3 id="day2Type"></h3>
         </div>
         <div class="weekdayTemp row">
           <h1 id="day2Temp"></h1>
@@ -91,7 +90,7 @@
       <div class="weekdayCard text-center">
         <div class="weekdayWeather row">
           <i id="day3Icon"></i>
-          <h3 id="day3Type">loading...</h3>
+          <h3 id="day3Type"></h3>
         </div>
         <div class="weekdayTemp row">
           <h1 id="day3Temp"></h1>
@@ -101,7 +100,7 @@
       <div class="weekdayCard text-center">
         <div class="weekdayWeather row">
           <i id="day4Icon"></i>
-          <h3 id="day4Type">loading...</h3>
+          <h3 id="day4Type"></h3>
         </div>
         <div class="weekdayTemp row">
           <h1 id="day4Temp"></h1>
@@ -111,7 +110,7 @@
       <div class="weekdayCard text-center">
         <div class="weekdayWeather row">
           <i id="day5Icon"></i>
-          <h3 id="day5Type">loading...</h3>
+          <h3 id="day5Type"></h3>
         </div>
         <div class="weekdayTemp row">
           <h1 id="day5Temp"></h1>
@@ -119,6 +118,12 @@
         </div>
       </div>
     </div>
+
+    <script>
+      window.onload = function () {
+        document.getElementById("inputField").value = "";
+      };
+    </script>
     <script
       src="https://kit.fontawesome.com/873685b891.js"
       crossorigin="anonymous"

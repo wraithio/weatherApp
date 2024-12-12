@@ -9,10 +9,32 @@ body{
     margin-top: 5rem;
 }
 
+
+
+i::before{
+    display: flex;
+    justify-content: center; 
+}
+
+h1{
+    font-size: 96px !important;
+}
+
+h2{
+    font-size: 36px !important;
+    
+}
+
 .input-group{
     background-color: rgb(207, 207, 139);
-    width: fit-content;
+    width: 70% !important;
+    height: 35%;
     border-radius: .25rem;
+}
+
+.inputCol{
+    display: flex;
+    justify-content: end;
 }
 
 span{
@@ -21,7 +43,8 @@ span{
 }
 input{
     background-color: transparent !important;
-    border: none !important;    
+    border: none !important;   
+    font-size: 28px !important; 
 }
 #searchBtn:hover{
     cursor: pointer;
@@ -34,6 +57,7 @@ input{
 .cityTitle{
     background-color: rgb(224, 187, 22);
     border-radius: 1rem 1rem 0rem 0rem;
+    padding-top: 1rem;
 }
 
 .cityFormat{
@@ -42,6 +66,10 @@ input{
 
 #stateName{
     padding: 0rem .5rem;
+}
+
+.fa-heart{
+    font-size: 48px !important;
 }
 
 .fa-heart:hover{
@@ -58,18 +86,22 @@ input{
     justify-content: center;
 }
 
-.highLows h3{
+.typeFormat{
+    justify-content: center;
+}
+
+.cityBody h3{
     width: fit-content;
     padding: 0px;
 }
 
-.weatherCol{
+/* .weatherCol{
     width: 150px;
     display: flex;
-    align-self: end;
     flex-direction: column;
+    justify-content: center;
     gap: 1.5rem;
-}
+} */
 
 .fivedayForecast{
     display: flex;
@@ -78,46 +110,26 @@ input{
 }
 
 .weekdayCard{
-   width: fit-content;
+   width: 2250px;
 }
 
 .weekdayWeather{
     background-color: rgb(224, 187, 22);
-    border-radius: 1rem 1rem 0rem 0rem;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
-
 .weekdayTemp{
     background-color: rgb(207, 207, 139);
-    border-radius: 0rem 0rem 1rem 1rem;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
 }
-
-#day1Icon{
-    align-self: end;
-    height: 70px;
-    position: relative;
-    top: 35px;
+.weekdayWeather i{
+    font-size: 104px !important;
+    height: 100px !important;
+    padding: 0px !important; 
+    margin-top: 7rem;
 }
-#day2Icon{
-    align-self: end;
-    height: 70px;
-    position: relative;
-    top: 35px;
-}
-#day3Icon{
-    align-self: end;
-    height: 70px;
-    position: relative;
-    top: 35px;
-}
-#day4Icon{
-    align-self: end;
-    height: 70px;
-    position: relative;
-    top: 35px;
-}
-#day5Icon{
-    align-self: end;
-    height: 70px;
-    position: relative;
-    top: 35px;
+#weatherIcon{
+    font-size: 104px !important;
+    height: 50px !important;
+    padding: 0px !important; 
+    margin: 4rem 0rem .5rem 0rem;
 }
