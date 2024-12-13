@@ -1,98 +1,124 @@
-body{
-    background-image: url(../assets/weather-bg.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+@font-face {
+  font-family: "Farro";
+  src: url(/assets/fonts/Farro-Light.ttf);
 }
 
-.container{
-    margin-top: 5rem;
+body {
+  background-image: url(../assets/weather-bg.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: "Farro", Arial, Helvetica, sans-serif !important;
 }
 
-
-
-i::before{
-    display: flex;
-    justify-content: center; 
+.container {
+  margin-top: 5rem;
 }
 
-h1{
-    font-size: 96px !important;
+i::before {
+  display: flex;
+  justify-content: center;
 }
 
-h2{
-    font-size: 36px !important;
-    
+h1 {
+  font-size: 96px !important;
 }
 
-.input-group{
-    background-color: rgb(207, 207, 139);
-    width: 70% !important;
-    height: 35%;
-    border-radius: .25rem;
+h2 {
+  font-size: 36px !important;
 }
 
-.inputCol{
-    display: flex;
-    justify-content: end;
+.input-group {
+  background-color: rgb(207, 207, 139);
+  height: 25%;
+  border-radius: 0.25rem;
 }
 
-span{
-    background-color: transparent !important;
-    border: none !important;
-}
-input{
-    background-color: transparent !important;
-    border: none !important;   
-    font-size: 28px !important; 
-}
-#searchBtn:hover{
-    cursor: pointer;
-}
-
-.weatherCard{
-    border-radius: 1rem;
-}
-
-.cityTitle{
-    background-color: rgb(224, 187, 22);
-    border-radius: 1rem 1rem 0rem 0rem;
-    padding-top: 1rem;
-}
-
-.cityFormat{
-    display: flex;
-}
-
-#stateName{
-    padding: 0rem .5rem;
-}
-
-.fa-heart{
-    font-size: 48px !important;
+.inputCol {
+  display: flex;
+  flex-direction: column;
 }
 
 .fa-heart:hover{
-    cursor: pointer;
-    color: red;
+    cursor: pointer !important;
+    color: red !important;
 }
 
-.cityBody{
-    background-color: rgb(207, 207, 139);
-    border-radius: 0rem 0rem 1rem 1rem;
+span {
+  background-color: transparent !important;
+  border: none !important;
+}
+input {
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 28px !important;
 }
 
-.highLows{
-    justify-content: center;
+.input-group[type=submit]:focus {
+    border: none !important;
 }
 
-.typeFormat{
-    justify-content: center;
+#searchBtn:hover {
+  cursor: pointer;
 }
 
-.cityBody h3{
-    width: fit-content;
-    padding: 0px;
+#favTabs {
+  background-color: rgb(207, 207, 139);
+  height: fit-content !important;
+}
+
+.btn{
+    color: grey !important;
+    font-weight: 900 !important;
+}
+.btn:hover{
+    color: black !important;
+}
+
+.weatherCard {
+  border-radius: 1rem;
+  width: 70%;
+}
+
+.cityTitle {
+  background-color: rgb(224, 187, 22);
+  border-radius: 1rem 1rem 0rem 0rem;
+  padding-top: 1rem;
+}
+
+.cityFormat {
+  display: flex;
+}
+
+#stateName {
+  padding: 0rem 0.5rem;
+}
+
+.fa-heart {
+  font-size: 48px !important;
+}
+
+.fa-heart:hover {
+  cursor: pointer !important;
+  color: red !important;
+}
+
+.cityBody {
+  background-color: rgb(207, 207, 139);
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.highLows {
+  justify-content: center;
+}
+
+.typeFormat {
+  justify-content: center;
+}
+
+.cityBody h3 {
+  width: fit-content;
+  padding: 0px;
 }
 
 /* .weatherCol{
@@ -103,33 +129,44 @@ input{
     gap: 1.5rem;
 } */
 
-.fivedayForecast{
-    display: flex;
-    gap: 3rem;
-    justify-content: space-around;
+.fivedayForecast {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3rem;
+  grid-template-rows: 1fr
 }
 
-.weekdayCard{
-   width: 2250px;
+.weatherCard{
+    height: 100% !important;
+}
+.weekdayWeather {
+  background-color: rgb(224, 187, 22);
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+}
+.weekdayTemp {
+  background-color: rgb(207, 207, 139);
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+}
+.weekdayWeather i {
+  font-size: 104px !important;
+  height: 100px !important;
+  padding: 0px !important;
+  margin-top: 7rem;
+}
+#weatherIcon {
+  font-size: 104px !important;
+  height: 50px !important;
+  padding: 0px !important;
+  margin: 4rem 0rem 0.5rem 0rem;
 }
 
-.weekdayWeather{
-    background-color: rgb(224, 187, 22);
-    border-radius: 0.5rem 0.5rem 0rem 0rem;
-}
-.weekdayTemp{
-    background-color: rgb(207, 207, 139);
-    border-radius: 0rem 0rem 0.5rem 0.5rem;
-}
-.weekdayWeather i{
-    font-size: 104px !important;
-    height: 100px !important;
-    padding: 0px !important; 
-    margin-top: 7rem;
-}
-#weatherIcon{
-    font-size: 104px !important;
-    height: 50px !important;
-    padding: 0px !important; 
-    margin: 4rem 0rem .5rem 0rem;
+
+@media screen and (max-width: 1400px) {
+    .weatherCard{
+        width: 80%;
+    }
+
+    .input-group{
+        height: 25%;
+    }
 }

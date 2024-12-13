@@ -1,17 +1,31 @@
 import { APIKEY } from "./environment.js";
-import { findCurrentWeatherIcon, findday1Icon, findday2Icon, findday3Icon, findday4Icon, findday5Icon } from "./icons.js";
+import {
+  findCurrentWeatherIcon,
+  findday1Icon,
+  findday2Icon,
+  findday3Icon,
+  findday4Icon,
+  findday5Icon,
+} from "./icons.js";
+import {
+  saveToLocalStorage,
+  getFromLocalStorage,
+  removeFromLocalStorage,
+} from "./localstorage.js";
 
+let Body = document.getElementById("Body");
 let currentLoc = [];
 let searchBtn = document.getElementById("searchBtn");
+let searchCol = document.getElementById("searchCol");
+let favBtn = document.getElementById("favBtn");
+let favTabs = document.getElementById("favTabs");
 let searchResult = "";
 let currentCity = "";
+let currentCountry = "";
 let cityName = document.getElementById("cityName");
 let stateName = document.getElementById("stateName");
 let countryName = document.getElementById("countryName");
-let cityLat = "";
-let cityLong = "";
 let generateLoc = document.getElementById("generateLoc");
-let generate5day = document.getElementById("generate5day");
 let inputField = document.getElementById("inputField");
 let weatherIcon = document.getElementById("weatherIcon");
 let forecasttabs = document.getElementById("forecasttabs");
@@ -34,20 +48,13 @@ const weekday = [
 const d = new Date();
 let day = weekday[d.getDay()];
 
-forecasttabs.className = "d-none";
-inputField.placeholder = "please wait...";
-cityName.innerText = "loading...";
-
 navigator.geolocation.getCurrentPosition(success, errorFunc);
 
 function success(position) {
-  forecasttabs.className = "fivedayForecast container";
-  inputField.placeholder = "Search for a City";
   console.log(position);
   currentLoc = position;
-  cityName.innerText = "load complete!";
   // findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
-  // apiCall(currentLoc.coords.latitude, currentLoc.coords.longitude)
+  // fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude)
   return currentLoc;
 }
 
@@ -55,8 +62,84 @@ function errorFunc(error) {
   console.log(error.message);
 }
 
+//current location fetch
+function findCurrentCity(currentLat, currentLong) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${APIKEY}&units=imperial`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      cityTemp.innerText = Math.round(data.main.temp) + "°F";
+      cityHigh.innerText = Math.round(data.main.temp_max) + "°/";
+      cityLow.innerText = Math.round(data.main.temp_min) + "°";
+      weatherType.innerText = data.weather[0].main;
+      findCurrentWeatherIcon(data.weather[0].description);
+      currentCity = data.name;
+      currentCountry = data.sys.country;
+      if (localStorage.Names.includes(currentCity)) {
+        favBtn.style.color = "red";
+        favBtn.className = "fa-solid fa-heart";
+      } else {
+        favBtn.style.color = "black";
+        favBtn.className = "fa-regular fa-heart";
+      }
+      findWeather(currentCity);
+    });
+}
+
+function findWeather(place) {
+  fetch(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${place}&appid=${APIKEY}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      // console.log(data[0].name)
+      if (!data[0].name.includes(searchResult)) {
+        console.log("no results found");
+      } else {
+        cityName.innerText = data[0].name + ",";
+        stateName.innerText = data[0].state;
+        countryName.innerText = data[0].country;
+        if (data[0].state == null) {
+          stateName.innerText = " ";
+          stateName.className = "p-1";
+        }
+      }
+    });
+}
+
+function findSearchWeather(place) {
+  fetch(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${place}&appid=${APIKEY}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      // console.log(data[0].name)
+
+      cityName.innerText = data[0].name + ",";
+      stateName.innerText = data[0].state;
+      countryName.innerText = data[0].country;
+      console.log(data);
+      if (data[0].state == null) {
+        stateName.innerText = " ";
+        stateName.className = "p-1";
+      } else {
+        stateName.className = "";
+      }
+      findCurrentCity(data[0].lat, data[0].lon);
+      fiveDayCall(data[0].lat, data[0].lon);
+    });
+}
+
 //5day forecast
-function apiCall(lat, long) {
+function fiveDayCall(lat, long) {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${APIKEY}&units=imperial`
   )
@@ -104,114 +187,92 @@ function day5Display(arr, i) {
   day5Name.innerText = weekday[d.getDay() + 5];
 }
 
-//current location fetch
-function findCurrentCity(currentLat, currentLong) {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${APIKEY}&units=imperial`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      cityTemp.innerText = Math.round(data.main.temp) + "°F";
-      cityHigh.innerText = Math.round(data.main.temp_max) + "°/";
-      cityLow.innerText = Math.round(data.main.temp_min) + "°";
-      weatherType.innerText = data.weather[0].main;
-      findCurrentWeatherIcon(data.weather[0].description);
-      currentCity = data.name;
-      findWeather(currentCity);
-    });
-}
-
-function findweatherIcon(icon) {
-  switch (icon) {
-    case "haze":
-      weatherIcon.className =
-        "fa-solid fa-cloud fa-2xl d-flex justify-content-center";
-      break;
-    case "clear sky":
-      day1Icon.className = "fa-regular fa-sun fa-2xl";
-      break;
-
-    default:
-      break;
+function favorite(city, country) {
+  if (!localStorage.Names.includes(city)) {
+    saveToLocalStorage(city, country);
+    favBtn.style.color = "red";
+    favBtn.className = "fa-solid fa-heart fa-2xl";
+    createElements();
   }
 }
 
-function findWeather(place) {
-  fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${place}&appid=${APIKEY}`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      // console.log(data[0].name)
-      if (!data[0].name.includes(searchResult)) {
-        console.log("no results found");
-      } else {
-        cityName.innerText = data[0].name + ",";
-        stateName.innerText = data[0].state;
-        countryName.innerText = data[0].country;
-        if (data[0].state == null) {
-          stateName.innerText = " ";
-          stateName.className = "p-1";
-        }
-      }
+function createElements() {
+  let cityNames = getFromLocalStorage();
+
+  cityNames.map((names) => {
+    console.log(names);
+
+    let i = document.createElement("i");
+    i.className = "fa-solid fa-heart d-flex p-2";
+    i.style.color = "red";
+    let h4 = document.createElement("h4");
+    h4.innerText = names;
+    h4.className = "p-2";
+    h4.style.color = "black";
+    h4.style.fontFamily = "Farro";
+
+    let removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "btn";
+    removeBtn.innerText = "X";
+    removeBtn.addEventListener("click", function () {
+      removeFromLocalStorage(names);
+      h4.remove();
+      i.remove();
     });
-}
-function findSearchWeather(place) {
-  fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${place}&appid=${APIKEY}`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      // console.log(data[0].name)
-      if (!data[0].name.includes(searchResult)) {
-        console.log("no results found");
-      } else {
-        cityName.innerText = data[0].name + ",";
-        stateName.innerText = data[0].state;
-        countryName.innerText = data[0].country;
-        console.log(data);
-        if (data[0].state == null) {
-          stateName.innerText = " ";
-          stateName.className = "p-1";
-        } else {
-          stateName.className = "";
-        }
-        findCurrentCity(data[0].lat, data[0].lon);
-        apiCall(data[0].lat, data[0].lon);
-      }
-    });
+    i.appendChild(h4);
+    h4.appendChild(removeBtn);
+    storedValue.appendChild(i);
+  });
 }
 
 function toTitleCase(s) {
-  return s.toLowerCase()
-          .split(' ')
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' ');
+  return s
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
+//Event Listeners
 generateLoc.addEventListener("click", function () {
   findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
-  apiCall(currentLoc.coords.latitude, currentLoc.coords.longitude);
+  fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude);
 });
-// generate5day.addEventListener("click", function () {
-//   apiCall(currentLoc.coords.latitude, currentLoc.coords.longitude);
-// });
+
+favBtn.addEventListener("click", function () {
+  favorite(currentCity, currentCountry);
+});
 
 inputField.addEventListener("input", function () {
   if (inputField.value == "") {
     searchResult = "no input";
   } else {
-    searchResult = toTitleCase(inputField.value)
+    searchResult = toTitleCase(inputField.value);
   }
 });
 
+inputField.addEventListener("focus", function () {
+    favTabs.className = " ";
+    createElements()
+});
+
+inputField.addEventListener("blur", function () {
+    favTabs.className = "d-none";
+});
+
+
+
+
+// searchCol.addEventListener('mouseout',function(){
+//   favTabs.className = 'd-none'
+// })
+
+// Body.addEventListener('click',function(){
+//   favTabs.className = 'd-none'
+// })
+
 searchBtn.addEventListener("click", function () {
   findSearchWeather(searchResult);
+  favTabs.className = "d-none";
 });
