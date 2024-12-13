@@ -14,37 +14,37 @@
   </head>
   <body id="Body">
     <div class="container">
-      <div class="row">
-        <div class="col-8">
+      <div class="row weatherHeader">
+        <div class="col-lg-8 col-md-6">
           <div class="weatherCard">
             <div class="row cityTitle">
               <div class="col-10 cityFormat">
-                <h2 id="cityName">Sacaraentp,</h2>
-                <h2 id="stateName">Caliofrnia</h2>
-                <h2 id="countryName">USA</h2>
+                <h2 id="cityName"></h2>
+                <h2 id="stateName"></h2>
+                <h2 id="countryName"></h2>
               </div>
-              <div class="col-2 align-self-center">
+              <div class="col-2">
                 <i id="favBtn" class="fa-regular fa-heart fa-2xl"></i>
               </div>
             </div>
             <div class="row cityBody">
               <div class="col-6">
                 <div class="row text-center">
-                  <h1 id="cityTemp">22</h1>
+                  <h1 id="cityTemp"></h1>
                 </div>
                 <div class="row highLows">
-                  <h3 id="cityHigh">22</h3>
-                  <h3 id="cityLow">22</h3>
+                  <h3 id="cityHigh"></h3>
+                  <h3 id="cityLow"></h3>
                 </div>
               </div>
               <div class="col-6">
                 <div class="row"><i class="fa-solid fa-cloud fa-2xl" id="weatherIcon"></i></div>
-                <div class="row typeFormat"><h3 id="weatherType">scattered clouds</h3></div>
+                <div class="row typeFormat"><h3 id="weatherType"></h3></div>
               </div>
             </div>
           </div>
         </div>
-        <div id="searchCol" class="col-4 inputCol">
+        <div id="searchCol" class="col-lg-4 col-md-6 inputCol">
           <div class="input-group">
             <span id="searchBtn" class="input-group-text"
               ><i class="fa-solid fa-magnifying-glass fa-xl"></i
@@ -58,67 +58,67 @@
               autocomplete="off"
             />
           </div>
-          <div id="favTabs" class="d-none">
+          <div id="favTabs" class="d-none bg-trans">
             <h4 id="storedValue"></h4>
           </div>
         </div>
       </div>
     </div>
-    <button id="generateLoc" type="button" class="btn btn-primary">
+    <!-- <button id="generateLoc" type="button" class="btn btn-primary">
       ON LOAD
-    </button>
+    </button> -->
     <!-- <button id="generate5day" type="button" class="btn btn-primary">
       GENERATE 5 DAY
     </button> -->
     <div id="forecasttabs" class="fivedayForecast container">
-      <div class="weekdayCard text-center">
+      <div class="weekdayCard text-center card1">
         <div class="weekdayWeather row">
           <i id="day1Icon" class="fa-solid fa-cloud fa-2xl"></i>
-          <h3 id="day1Type">scattered clouds</h3>
+          <h3 id="day1Type"></h3>
         </div>
         <div class="weekdayTemp row">
           <h1 id="day1Temp">88</h1>
-          <h3 id="day1Name">Wednesday</h3>
+          <h3 id="day1Name"></h3>
         </div>
       </div>
-      <div class="weekdayCard text-center">
+      <div class="weekdayCard text-center card2">
         <div class="weekdayWeather row">
           <i id="day2Icon" class="fa-solid fa-cloud fa-2xl"></i>
-          <h3 id="day2Type">scattered clouds</h3>
+          <h3 id="day2Type"></h3>
         </div>
         <div class="weekdayTemp row">
-          <h1 id="day2Temp">88</h1>
-          <h3 id="day2Name">Wednesday</h3>
+          <h1 id="day2Temp"></h1>
+          <h3 id="day2Name"></h3>
         </div>
       </div>
-      <div class="weekdayCard text-center">
+      <div class="weekdayCard text-center card3">
         <div class="weekdayWeather row">
           <i id="day3Icon" class="fa-solid fa-cloud fa-2xl"></i>
-          <h3 id="day3Type">scattered clouds</h3>
+          <h3 id="day3Type"></h3>
         </div>
         <div class="weekdayTemp row">
-          <h1 id="day3Temp">88</h1>
-          <h3 id="day3Name">Wednesday</h3>
+          <h1 id="day3Temp"></h1>
+          <h3 id="day3Name"></h3>
         </div>
       </div>
-      <div class="weekdayCard text-center">
+      <div class="weekdayCard text-center card4">
         <div class="weekdayWeather row">
           <i id="day4Icon" class="fa-solid fa-cloud fa-2xl"></i>
-          <h3 id="day4Type">scattered clouds</h3>
+          <h3 id="day4Type"></h3>
         </div>
         <div class="weekdayTemp row">
-          <h1 id="day4Temp">88</h1>
-          <h3 id="day4Name">Wednesday</h3>
+          <h1 id="day4Temp"></h1>
+          <h3 id="day4Name"></h3>
         </div>
       </div>
-      <div class="weekdayCard text-center">
+      <div class="weekdayCard text-center card5">
         <div class="weekdayWeather row">
           <i id="day5Icon" class="fa-solid fa-cloud fa-2xl"></i>
-          <h3 id="day5Type">scattered clouds</h3>
+          <h3 id="day5Type"></h3>
         </div>
         <div class="weekdayTemp row">
-          <h1 id="day5Temp">88</h1>
-          <h3 id="day5Name">Wednesday</h3>
+          <h1 id="day5Temp"></h1>
+          <h3 id="day5Name"></h3>
         </div>
       </div>
     </div>

@@ -22,16 +22,33 @@ i::before {
 
 h1 {
   font-size: 96px !important;
+  padding-top: 1rem;
 }
 
 h2 {
-  font-size: 36px !important;
+  font-size: 36px;
 }
 
 .input-group {
-  background-color: rgb(207, 207, 139);
+  background-color: rgb(212, 212, 144);
   height: 25%;
-  border-radius: 0.25rem;
+}
+
+.bg-trans{
+  background-color: transparent;
+}
+
+.form-control{
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.input-group:hover{
+  background-color: rgba(212, 212, 144, 0.877);
+}
+
+.cityHistory:hover{
+  background-color: rgb(199, 199, 102) ;
 }
 
 .inputCol {
@@ -52,10 +69,6 @@ input {
   background-color: transparent !important;
   border: none !important;
   font-size: 28px !important;
-}
-
-.input-group[type=submit]:focus {
-    border: none !important;
 }
 
 #searchBtn:hover {
@@ -104,7 +117,7 @@ input {
 }
 
 .cityBody {
-  background-color: rgb(207, 207, 139);
+  background-color:  rgba(236, 236, 158, 0.767);
   border-radius: 0rem 0rem 1rem 1rem;
 }
 
@@ -133,28 +146,34 @@ input {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 3rem;
-  grid-template-rows: 1fr
+  grid-template-rows: 1fr;
+  
 }
 
 .weatherCard{
     height: 100% !important;
+}
+
+.weekdayCard{
+  min-height: 450px !important;
 }
 .weekdayWeather {
   background-color: rgb(224, 187, 22);
   border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
 .weekdayTemp {
-  background-color: rgb(207, 207, 139);
+  background-color: rgba(236, 236, 158, 0.767);
   border-radius: 0rem 0rem 0.5rem 0.5rem;
 }
+
 .weekdayWeather i {
-  font-size: 104px !important;
-  height: 100px !important;
+  font-size: 100px !important;
+  height: 80px !important;
   padding: 0px !important;
-  margin-top: 7rem;
+  margin-top: 5rem;
 }
 #weatherIcon {
-  font-size: 104px !important;
+  font-size: 100px !important;
   height: 50px !important;
   padding: 0px !important;
   margin: 4rem 0rem 0.5rem 0rem;
@@ -162,11 +181,175 @@ input {
 
 
 @media screen and (max-width: 1400px) {
-    .weatherCard{
-        width: 80%;
-    }
+  .cityFormat h2{
+    font-size: 22px;
+  }
+
 
     .input-group{
         height: 25%;
     }
+
+    .fa-heart{
+      padding-top: 0px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+  h1{
+    font-size: 81px !important;
+  }
+
+  input{
+    font-size: 22px !important;
+  }
+  .cityFormat h2{
+    font-size: 20px;
+  }
+
+  .typeFormat h3{
+    font-size: 20px;
+  }
+
+.container{
+  max-width: 1000px !important ;
+}
+
+.weekdayTemp h3{
+  font-size: 18px;
+}
+.weekdayWeather h3{
+  font-size: 18px;
+}
+
+.weekdayWeather i{
+  font-size: 70px !important;
+  height: 70px !important;
+}
+
+.weatherCard{
+  width: 80%;
+}
+
+}
+
+@media screen and (max-width:992px) {
+  .container{
+    max-width: 900px !important;
+  }
+
+  h1{
+    font-size: 64px !important;
+  }
+
+  .weatherCard{
+    width: 100%;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .container{
+    max-width: 650px !important;
+  }
+  .weatherHeader{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+
+  .weekdayTemp{
+    background-color: rgb(236, 236, 158);
+  }
+  .fivedayForecast{
+    gap: 0;
+    max-width: 700px;
+    padding: 0px !important;
+    ;
+  }
+}
+
+@media screen and (max-width: 620px){
+  .fivedayForecast{
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    grid-template-rows: repeat(5,1fr);
+  }
+
+  .card1{
+    grid-row: 1;
+  }
+  .card2{
+    grid-row: 2;
+  }
+  .card3{
+    grid-row: 3;
+  }
+  .card4{
+    grid-row: 4;
+  }
+  .card5{
+    grid-row: 5;
+  }
+
+  .container{
+    padding: 0px !important;
+    max-width: 450px !important;
+    margin-top: 3rem;
+  }
+
+  .fivedayForecast{
+    max-width: 250px !important;
+    margin-bottom: 4rem;
+  }
+
+  .weekdayTemp{
+    background-color: rgba(236, 236, 158, 0.767);
+  }
+}
+
+@media screen and (max-width:400px) {
+  .container{
+    max-width: 250px !important;
+  }
+
+  #weatherIcon{
+    font-size: 70px !important;
+    height: 50px !important;
+  }
+  .typeFormat{
+    text-align: center;
+  }
+  .cityFormat{
+    flex-direction: column;
+  }
+  #cityName{
+    padding-left: .5rem;
+  }
+  #countryName{
+    padding-left: .5rem;
+  }
+.col-10{
+  width: 66.7% !important;
+}
+.col-2{
+  width: 33.3% !important;
+  display: flex;
+}
+  .fa-heart{
+    
+    align-self: center;
+  }
+
+  .weekdayWeather i{
+    font-size: 100px !important;
+  }
+
+  input{
+    font-size: 18px !important;
+  }
+
+  .inputCol{
+    padding: 0px !important;
+  }
 }

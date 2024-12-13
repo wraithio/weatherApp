@@ -53,15 +53,15 @@ navigator.geolocation.getCurrentPosition(success, errorFunc);
 function success(position) {
   console.log(position);
   currentLoc = position;
-  // findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
-  // fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude)
+  findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
+  fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude)
   return currentLoc;
 }
 
 function errorFunc(error) {
   console.log(error.message);
 }
-
+createElements();
 //current location fetch
 function findCurrentCity(currentLat, currentLong) {
   fetch(
@@ -121,7 +121,7 @@ function findSearchWeather(place) {
       return response.json();
     })
     .then((data) => {
-      // console.log(data[0].name)
+      console.log(data[0].name);
 
       cityName.innerText = data[0].name + ",";
       stateName.innerText = data[0].state;
@@ -192,7 +192,7 @@ function favorite(city, country) {
     saveToLocalStorage(city, country);
     favBtn.style.color = "red";
     favBtn.className = "fa-solid fa-heart fa-2xl";
-    createElements();
+    addToFavs(city, country);
   }
 }
 
@@ -203,14 +203,17 @@ function createElements() {
     console.log(names);
 
     let i = document.createElement("i");
-    i.className = "fa-solid fa-heart d-flex p-2";
+    i.className = "fa-solid fa-heart d-flex p-2 cityHistory";
     i.style.color = "red";
     let h4 = document.createElement("h4");
     h4.innerText = names;
     h4.className = "p-2";
     h4.style.color = "black";
     h4.style.fontFamily = "Farro";
-
+    h4.addEventListener("click", function () {
+      findSearchWeather(iterateUntilComma(h4.textContent));
+      favTabs.className = "d-none bg-trans";
+    });
     let removeBtn = document.createElement("button");
     removeBtn.type = "button";
     removeBtn.className = "btn";
@@ -221,9 +224,34 @@ function createElements() {
       i.remove();
     });
     i.appendChild(h4);
-    h4.appendChild(removeBtn);
+    h4.insertAdjacentElement("afterend",removeBtn);
     storedValue.appendChild(i);
   });
+}
+
+function addToFavs(city, country) {
+  let i = document.createElement("i");
+  i.className = "fa-solid fa-heart d-flex p-2";
+  i.style.color = "red";
+  let h4 = document.createElement("h4");
+  h4.innerText = `${city}, ${country}`;
+  h4.className = "p-2 cityHistory";
+  h4.style.color = "black";
+  h4.style.fontFamily = "Farro";
+
+  let removeBtn = document.createElement("button");
+  removeBtn.type = "button";
+  removeBtn.className = "btn";
+  removeBtn.innerText = "X";
+  removeBtn.addEventListener("click", function () {
+    removeFromLocalStorage(names);
+    h4.remove();
+    i.remove();
+  });
+
+  i.appendChild(h4);
+  h4.appendChild(removeBtn);
+  storedValue.appendChild(i);
 }
 
 function toTitleCase(s) {
@@ -234,11 +262,24 @@ function toTitleCase(s) {
     .join(" ");
 }
 
+function iterateUntilComma(inputString) {
+  let result = "";
+
+  for (let i = 0; i < inputString.length; i++) {
+    if (inputString[i] === ",") {
+      break;
+    }
+    result += inputString[i];
+  }
+
+  return result;
+}
+
 //Event Listeners
-generateLoc.addEventListener("click", function () {
-  findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
-  fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude);
-});
+// generateLoc.addEventListener("click", function () {
+//   findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
+//   fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude);
+// });
 
 favBtn.addEventListener("click", function () {
   favorite(currentCity, currentCountry);
@@ -253,16 +294,18 @@ inputField.addEventListener("input", function () {
 });
 
 inputField.addEventListener("focus", function () {
-    favTabs.className = " ";
-    createElements()
+  if(storedValue.textContent == '')
+  {
+    favTabs.className = 'd-none bg-trans'
+  }else{
+    favTabs.className = " ";  
+  }
 });
 
-inputField.addEventListener("blur", function () {
-    favTabs.className = "d-none";
-});
-
-
-
+// inputField.addEventListener("blur", function () {
+//   console.log('ddd')
+//     favTabs.className = "d-none";
+// });
 
 // searchCol.addEventListener('mouseout',function(){
 //   favTabs.className = 'd-none'
