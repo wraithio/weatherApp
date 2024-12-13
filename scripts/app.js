@@ -1,4 +1,4 @@
-import { APIKEY } from "./environment.js";
+import { APIKEY } from "./environmentAPI.js";
 import {
   findCurrentWeatherIcon,
   findday1Icon,
