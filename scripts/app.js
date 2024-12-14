@@ -62,7 +62,7 @@ function errorFunc(error) {
   console.log(error.message);
 }
 createElements();
-//current location fetch
+//current location nd search query fetch
 function findCurrentCity(currentLat, currentLong) {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${APIKEY}&units=imperial`
@@ -91,6 +91,7 @@ function findCurrentCity(currentLat, currentLong) {
     });
 }
 
+//set city state and country to header
 function findWeather(place) {
   fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${place}&appid=${APIKEY}`
@@ -277,11 +278,6 @@ function iterateUntilComma(inputString) {
 }
 
 //Event Listeners
-// generateLoc.addEventListener("click", function () {
-//   findCurrentCity(currentLoc.coords.latitude, currentLoc.coords.longitude);
-//   fiveDayCall(currentLoc.coords.latitude, currentLoc.coords.longitude);
-// });
-
 favBtn.addEventListener("click", function () {
   favorite(currentCity, currentCountry);
 });
@@ -302,19 +298,6 @@ inputField.addEventListener("focus", function () {
     favTabs.className = " ";  
   }
 });
-
-// inputField.addEventListener("blur", function () {
-//   console.log('ddd')
-//     favTabs.className = "d-none";
-// });
-
-// searchCol.addEventListener('mouseout',function(){
-//   favTabs.className = 'd-none'
-// })
-
-// Body.addEventListener('click',function(){
-//   favTabs.className = 'd-none'
-// })
 
 searchBtn.addEventListener("click", function () {
   findSearchWeather(searchResult);

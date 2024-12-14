@@ -72,11 +72,11 @@ input {
 }
 
 .weekdayTemp{
-  height: 200px;
+  height: 150px;
 }
 
 .weekdayWeather{
-  height: 250px;
+  height: 200px;
 }
 #searchBtn:hover {
   cursor: pointer;
