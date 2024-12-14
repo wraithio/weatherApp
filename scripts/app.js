@@ -72,6 +72,7 @@ function findCurrentCity(currentLat, currentLong) {
     })
     .then((data) => {
       console.log(data);
+      cityName.innerText = data.name
       cityTemp.innerText = Math.round(data.main.temp) + "°F";
       cityHigh.innerText = Math.round(data.main.temp_max) + "°/";
       cityLow.innerText = Math.round(data.main.temp_min) + "°";

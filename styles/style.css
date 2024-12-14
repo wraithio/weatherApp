@@ -71,6 +71,13 @@ input {
   font-size: 28px !important;
 }
 
+.weekdayTemp{
+  height: 200px;
+}
+
+.weekdayWeather{
+  height: 250px;
+}
 #searchBtn:hover {
   cursor: pointer;
 }
@@ -78,6 +85,7 @@ input {
 #favTabs {
   background-color: rgb(207, 207, 139);
   height: fit-content !important;
+  overflow-y: scroll;
 }
 
 .btn{
